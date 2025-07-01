@@ -1,0 +1,146 @@
+/* style.css - Matrix-inspired, suave, masculine, and responsive */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Orbitron', sans-serif;
+  background-color: #000;
+  color: #00ff88;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.section {
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 40px;
+  border-radius: 10px;
+  max-width: 1000px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.appear {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+h1, h2, h3 {
+  color: #00ff88;
+  margin-bottom: 20px;
+}
+
+p {
+  color: #ccc;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #00ff88;
+  color: #000;
+  text-decoration: none;
+  padding: 15px 30px;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+  display: inline-block;
+}
+
+.cta-button:hover {
+  background-color: #00cc66;
+}
+
+/* Difference Section */
+.difference .usps {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  list-style: none;
+  padding: 0;
+}
+
+.usps li {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.usps img {
+  width: 40px;
+  height: 40px;
+}
+
+/* Campuses Section */
+.campus-list {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.campus h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #00ff88;
+}
+
+/* Responsive Styling */
+@media (min-width: 768px) {
+  .usps {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .campus-list {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .campus {
+    flex: 1;
+    padding: 0 20px;
+  }
+
+  .overlay {
+    padding: 60px;
+  }
+}
+
+/* Brotherhood Section */
+.brotherhood p {
+  max-width: 800px;
+  margin: auto;
+  font-style: italic;
+}
+
+/* CTA Section */
+.cta h2 {
+  font-size: 2rem;
+}
+
+/* Mobile Hero Optimization */
+@media (max-width: 600px) {
+  .hero {
+    background-image: url('images/mobile_banner.jpg');
+  }
+}
