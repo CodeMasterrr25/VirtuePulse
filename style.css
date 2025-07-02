@@ -14,12 +14,11 @@ body {
   line-height: 1.6;
 }
 
-/* Headings */
 h1, h2, h3 {
   color: #00ff99;
+  text-align: center;
 }
 
-/* Centered Content Container */
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -29,11 +28,11 @@ h1, h2, h3 {
 
 /* Hero Section */
 .hero {
-  background-image: url('images/hero-main.jpg');
+  background-image: url('images/hero.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 10rem 2rem;
+  padding: 12rem 2rem;
   text-align: center;
   position: relative;
   z-index: 1;
@@ -46,13 +45,14 @@ h1, h2, h3 {
   left: 0;
   height: 100%;
   width: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.65);
   z-index: -1;
 }
 
 .hero h1 {
   font-size: 3rem;
   margin-bottom: 1rem;
+  color: #00ff99;
 }
 
 .hero p {
@@ -80,69 +80,45 @@ h1, h2, h3 {
   color: #fff;
 }
 
-/* Section Layout */
+/* Scroll Sections */
 .campus-section {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  padding: 6rem 0;
-  gap: 2rem;
-}
-
-.campus-section.reverse {
-  flex-direction: row-reverse;
-}
-
-.campus-section.dark-section {
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   padding: 6rem 2rem;
-  color: #e0ffe0;
   text-align: center;
 }
 
-/* Campus Content */
-.campus-content {
-  max-width: 800px;
-  padding: 2rem;
-  text-align: center;
-}
-
-.campus-content img {
+.campus-section img.icon {
   width: 80px;
   margin-bottom: 1rem;
 }
 
-.campus-content h2 {
+.campus-section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #00ff99;
 }
 
-.campus-content p {
+.campus-section p {
   font-size: 1.1rem;
   color: #caffc9;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Campus Image Panel */
 .campus-image {
-  flex: 1;
-  height: 300px;
-  max-width: 800px;
+  width: 100%;
+  height: 350px;
   background-size: cover;
   background-position: center;
+  margin-bottom: 2rem;
 }
 
 /* Final CTA */
 .cta-final {
-  background-size: cover;
-  background-position: center;
+  background-color: #000;
   padding: 5rem 2rem;
   text-align: center;
-  background-color: #000;
   color: #e0ffe0;
 }
 
@@ -159,20 +135,6 @@ h1, h2, h3 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .campus-section,
-  .campus-section.reverse {
-    flex-direction: column;
-  }
-
-  .campus-image {
-    height: 200px;
-    width: 100%;
-  }
-
-  .campus-content {
-    padding: 1.5rem;
-  }
-
   .hero h1 {
     font-size: 2rem;
   }
@@ -185,5 +147,9 @@ h1, h2, h3 {
   .cta-button {
     padding: 0.75rem 1.5rem;
     font-size: 1rem;
+  }
+
+  .campus-image {
+    height: 200px;
   }
 }
