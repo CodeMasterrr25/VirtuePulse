@@ -14,11 +14,13 @@ body {
   line-height: 1.6;
 }
 
+/* Typography */
 h1, h2, h3 {
   color: #00ff99;
   text-align: center;
 }
 
+/* Container Layout */
 .container {
   max-width: 800px;
   margin: 0 auto;
@@ -80,24 +82,35 @@ h1, h2, h3 {
   color: #fff;
 }
 
-/* Scroll Sections */
-.campus-section {
+/* Section Layout */
+.section {
+  max-width: 800px;
+  margin: 0 auto;
   padding: 6rem 2rem;
   text-align: center;
 }
 
-.campus-section img.icon {
+.section-background {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.75);
+  color: #e0ffe0;
+}
+
+.section img.icon {
   width: 80px;
   margin-bottom: 1rem;
 }
 
-.campus-section h2 {
+.section h2 {
   font-size: 2rem;
   margin-bottom: 1rem;
   color: #00ff99;
 }
 
-.campus-section p {
+.section p {
   font-size: 1.1rem;
   color: #caffc9;
   margin-bottom: 2rem;
@@ -106,7 +119,7 @@ h1, h2, h3 {
   margin-right: auto;
 }
 
-.campus-image {
+.section .campus-image {
   width: 100%;
   height: 350px;
   background-size: cover;
@@ -116,10 +129,14 @@ h1, h2, h3 {
 
 /* Final CTA */
 .cta-final {
-  background-color: #000;
+  background-image: url('images/cta_join.jpg');
+  background-size: cover;
+  background-position: center;
   padding: 5rem 2rem;
   text-align: center;
   color: #e0ffe0;
+  background-color: #000;
+  background-repeat: no-repeat;
 }
 
 .cta-final h2 {
@@ -149,7 +166,7 @@ h1, h2, h3 {
     font-size: 1rem;
   }
 
-  .campus-image {
+  .section .campus-image {
     height: 200px;
   }
 }
