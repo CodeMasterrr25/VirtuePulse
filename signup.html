@@ -32,10 +32,11 @@
         <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
         <label for="message">Why do you want to join VirtuePulse? (Optional)</label>
         <textarea id="message" name="message" rows="4" placeholder="Tell us your goals"></textarea>
-        <input type="hidden" name="_next" value="https://your-username.github.io/virtuepulse/signup.html#success">
+        <input type="hidden" name="_next" value="https://codemasterrr25.github.io/VirtuePulse/signup.html#success">
         <input type="hidden" name="_subject" value="VirtuePulse Waitlist Submission">
         <input type="text" name="_gotcha" style="display:none;" />
         <button type="submit" class="cta-button">Secure My Spot</button>
+        <div id="loader-container"><div id="loader"></div></div>
       </form>
       <p class="success-message" id="success-message">Thanks for joining the waitlist! We’ll notify you when VirtuePulse launches.</p>
     </div>
@@ -57,6 +58,10 @@
     document.getElementById("preorder-form").addEventListener("submit", async function (e) {
       e.preventDefault();
       const form = this;
+      const submitButton = form.querySelector('button[type="submit"]');
+      const loader = document.getElementById("loader-container");
+      submitButton.disabled = true; // Disable button to prevent double submissions
+      loader.style.display = "flex"; // Show spinner
       const formData = new FormData(form);
       try {
         const response = await fetch(form.action, {
@@ -74,6 +79,9 @@
       } catch (error) {
         console.error("Error:", error);
         alert("Oops! Something went wrong. Please try again.");
+      } finally {
+        submitButton.disabled = false; // Re-enable button
+        loader.style.display = "none"; // Hide spinner
       }
     });
 
@@ -146,6 +154,25 @@
       font-size: 1.2rem;
       text-align: center;
       margin-top: 1rem;
+    }
+    #loader-container {
+      display: none;
+      width: 100%;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+    }
+    #loader {
+      border: 4px solid #00ff88;
+      border-bottom: 4px solid #fff;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
     @media (max-width: 768px) {
       .signup-container {
