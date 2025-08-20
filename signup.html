@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VirtuePulse - Preorder Access</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sticky Navigation -->
+  <header class="sticky-nav">
+    <nav class="container">
+      <a href="index.html" class="logo">VirtuePulse</a>
+      <ul>
+        <li><a href="signup.html">Join Now</a></li>
+        <li><a href="index.html#campuses">Campuses</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Signup Section -->
+  <section class="signup-section">
+    <div class="signup-container">
+      <h2>Join the VirtuePulse Waitlist</h2>
+      <p style="color: #d4f7d4; margin-bottom: 2rem;">Be the first to access our elite campuses at launch. Drop your details below to secure your spot!</p>
+      <form class="signup-form" id="preorder-form">
+        <label for="name">Full Name *</label>
+        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+        <label for="email">Email Address *</label>
+        <input type="email" id="email" name="email" required placeholder="Enter your email">
+        <label for="phone">Phone Number (Optional)</label>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+        <label for="message">Why do you want to join VirtuePulse? (Optional)</label>
+        <textarea id="message" name="message" rows="4" placeholder="Tell us your goals"></textarea>
+        <button type="submit" class="cta-button">Secure My Spot</button>
+      </form>
+      <p class="success-message" id="success-message">Thanks for joining the waitlist! We’ll notify you when VirtuePulse launches.</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 VirtuePulse. All rights reserved.</p>
+      <ul>
+        <li><a href="signup.html">Join Waitlist</a></li>
+        <li><a href="mailto:support@virtuepulse.com">Contact Us</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <script>
+    // Form Submission Handling
+    document.getElementById("preorder-form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      try {
+        // Uncomment for backend integration
+        /*
+        const response = await fetch('/api/preorder', {
+          method: 'POST',
+          body: formData
+        });
+        if (response.ok) {
+          document.querySelector(".signup-form").style.display = "none";
+          document.querySelector(".success-message").style.display = "block";
+        }
+        */
+        // Client-side success message (for static sites)
+        document.querySelector(".signup-form").style.display = "none";
+        document.querySelector(".success-message").style.display = "block";
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+  </script>
+
+  <style>
+    /* Signup Page Specific Styles */
+    .signup-section {
+      background-image: url('images/hero.jpg');
+      background-size: cover;
+      background-position: center;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    . Signup-container {
+      background: rgba(0, 0, 0, 0.85);
+      border-radius: 10px;
+      padding: 2rem;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 20px #00ff8850;
+      animation: fadeIn 1s ease-out;
+    }
+    .signup-container h2 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 2rem;
+      color: #00ff88;
+      margin-bottom: 1.5rem;
+    }
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .signup-form label {
+      font-size: 1rem;
+      color: #d4f7d4;
+      text-align: left;
+    }
+    .signup-form input, .signup-form textarea {
+      padding: 0.8rem;
+      border: none;
+      border-radius: 4px;
+      background: #222;
+      color: #d4f7d4;
+      font-size: 1rem;
+    }
+    .signup-form input:focus, .signup-form textarea:focus {
+      outline: none;
+      box-shadow: 0 0 10px #00ff88;
+    }
+    .signup-form .cta-button {
+      margin-top: 1rem;
+      align-self: center;
+    }
+    .success-message {
+      display: none;
+      color: #00ff88;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      .signup-container {
+        padding: 1.5rem;
+      }
+      .signup-container h2 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</body>
+</html>
