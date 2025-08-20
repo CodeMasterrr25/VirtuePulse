@@ -23,7 +23,7 @@
     <div class="signup-container">
       <h2>Join the VirtuePulse Waitlist</h2>
       <p style="color: #d4f7d4; margin-bottom: 2rem;">Be the first to access our elite campuses at launch. Drop your details below to secure your spot!</p>
-      <form class="signup-form" id="preorder-form">
+      <form class="signup-form" id="preorder-form" method="POST" action="https://formspree.io/f/mwpqdyyq">
         <label for="name">Full Name *</label>
         <input type="text" id="name" name="name" required placeholder="Enter your full name">
         <label for="email">Email Address *</label>
@@ -32,6 +32,9 @@
         <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
         <label for="message">Why do you want to join VirtuePulse? (Optional)</label>
         <textarea id="message" name="message" rows="4" placeholder="Tell us your goals"></textarea>
+        <input type="hidden" name="_next" value="https://your-username.github.io/virtuepulse/signup.html#success">
+        <input type="hidden" name="_subject" value="VirtuePulse Waitlist Submission">
+        <input type="text" name="_gotcha" style="display:none;" />
         <button type="submit" class="cta-button">Secure My Spot</button>
       </form>
       <p class="success-message" id="success-message">Thanks for joining the waitlist! We’ll notify you when VirtuePulse launches.</p>
@@ -53,24 +56,32 @@
     // Form Submission Handling
     document.getElementById("preorder-form").addEventListener("submit", async function (e) {
       e.preventDefault();
-      const formData = new FormData(this);
+      const form = this;
+      const formData = new FormData(form);
       try {
-        // Uncomment for backend integration
-        /*
-        const response = await fetch('/api/preorder', {
-          method: 'POST',
-          body: formData
+        const response = await fetch(form.action, {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
         });
         if (response.ok) {
-          document.querySelector(".signup-form").style.display = "none";
+          form.style.display = "none";
           document.querySelector(".success-message").style.display = "block";
+        } else {
+          console.error("Form submission failed:", response.statusText);
+          alert("Oops! Something went wrong. Please try again.");
         }
-        */
-        // Client-side success message (for static sites)
+      } catch (error) {
+        console.error("Error:", error);
+        alert("Oops! Something went wrong. Please try again.");
+      }
+    });
+
+    // Check for #success in URL on page load
+    window.addEventListener("load", () => {
+      if (window.location.hash === "#success") {
         document.querySelector(".signup-form").style.display = "none";
         document.querySelector(".success-message").style.display = "block";
-      } catch (error) {
-        console.error('Error:', error);
       }
     });
   </script>
