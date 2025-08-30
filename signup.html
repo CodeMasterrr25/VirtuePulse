@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VirtuePulse - Preorder Access</title>
+  <title>VirtuePulse - Citadel Access</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -21,9 +21,9 @@
   <!-- Signup Section -->
   <section class="signup-section">
     <div class="signup-container">
-      <h2>Join the VirtuePulse Waitlist</h2>
-      <p style="color: #d4f7d4; margin-bottom: 2rem;">Be the first to access our elite campuses at launch. Drop your details below to secure your spot!</p>
-      <form class="signup-form" id="preorder-form" method="POST" action="https://formspree.io/f/mwpqdyyq">
+      <h2>Join the VirtuePulse Citadel</h2>
+      <p style="color: #d4f7d4; margin-bottom: 2rem;">Join the waitlist for exclusive R99 access to The Citadel on Discord. Drop your details to secure your spot!</p>
+      <form class="signup-form" id="citadel-form" method="POST" action="https://formspree.io/f/xqadqpnk">
         <label for="name">Full Name *</label>
         <input type="text" id="name" name="name" required placeholder="Enter your full name">
         <label for="email">Email Address *</label>
@@ -33,12 +33,12 @@
         <label for="message">Why do you want to join VirtuePulse? (Optional)</label>
         <textarea id="message" name="message" rows="4" placeholder="Tell us your goals"></textarea>
         <input type="hidden" name="_next" value="https://codemasterrr25.github.io/VirtuePulse/signup.html#success">
-        <input type="hidden" name="_subject" value="VirtuePulse Waitlist Submission">
+        <input type="hidden" name="_subject" value="VirtuePulse Citadel Waitlist">
         <input type="text" name="_gotcha" style="display:none;" />
-        <button type="submit" class="cta-button">Secure My Spot</button>
+        <button type="submit" class="cta-button">Join Waitlist</button>
         <div id="loader-container"><div id="loader"></div></div>
       </form>
-      <p class="success-message" id="success-message">Thanks for joining the waitlist! We’ll notify you when VirtuePulse launches.</p>
+      <p class="success-message" id="success-message">Thanks for joining the waitlist! We’ll contact you with R99 payment details to access The Citadel.</p>
     </div>
   </section>
 
@@ -47,7 +47,7 @@
     <div class="container">
       <p>&copy; 2025 VirtuePulse. All rights reserved.</p>
       <ul>
-        <li><a href="signup.html">Join Waitlist</a></li>
+        <li><a href="signup.html">Join Citadel</a></li>
         <li><a href="mailto:virtuepulse@gmail.com">Contact Us</a></li>
       </ul>
     </div>
@@ -55,13 +55,13 @@
 
   <script>
     // Form Submission Handling
-    document.getElementById("preorder-form").addEventListener("submit", async function (e) {
+    document.getElementById("citadel-form").addEventListener("submit", async function (e) {
       e.preventDefault();
       const form = this;
       const submitButton = form.querySelector('button[type="submit"]');
       const loader = document.getElementById("loader-container");
-      submitButton.disabled = true; // Disable button to prevent double submissions
-      loader.style.display = "flex"; // Show spinner
+      submitButton.disabled = true;
+      loader.style.display = "flex";
       const formData = new FormData(form);
       try {
         const response = await fetch(form.action, {
@@ -73,15 +73,16 @@
           form.style.display = "none";
           document.querySelector(".success-message").style.display = "block";
         } else {
-          console.error("Form submission failed:", response.statusText);
-          alert("Oops! Something went wrong. Please try again.");
+          const errorText = await response.text();
+          console.error("Form submission failed:", response.status, errorText);
+          alert(`Oops! Submission failed. Error: ${response.status} - ${errorText}`);
         }
       } catch (error) {
-        console.error("Error:", error);
-        alert("Oops! Something went wrong. Please try again.");
+        console.error("Submission error:", error.message);
+        alert(`Oops! Submission failed. Error: ${error.message}`);
       } finally {
-        submitButton.disabled = false; // Re-enable button
-        loader.style.display = "none"; // Hide spinner
+        submitButton.disabled = false;
+        loader.style.display = "none";
       }
     });
 
